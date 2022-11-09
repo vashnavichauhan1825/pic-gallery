@@ -1,11 +1,14 @@
-import React from "react";
+import { useSelector } from "react-redux";
 import { ImageCard, ImageTextBox } from "../../style/container";
 import { saveAs } from "file-saver";
 
 const Card = (props) => {
+  const checkWiring = useSelector((state) => state.gallery.dummyValue);
   const downloadImage = (url) => {
     saveAs(`${url}`, "image.jpg"); // Put your image url here.
   };
+  console.log(checkWiring);
+
   return (
     <ImageCard>
       <img src={props.urls.small} />
