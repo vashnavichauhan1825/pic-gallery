@@ -4,6 +4,9 @@ export const GlobalStyle = createGlobalStyle`
 body{
               margin: 0;
 }
+a {
+    text-decoration: none;
+  }
 `;
 export const Nav = styled.div`
   width: 100%;
@@ -12,6 +15,14 @@ export const Nav = styled.div`
   align-items: center;
   height: 90px;
   background-color: blue;
+
+  input {
+    background-color: antiquewhite;
+    border: none;
+    width: 30%;
+    color: white;
+    height: 25px;
+  }
 `;
 
 export const GalleryCont = styled.div`
@@ -39,6 +50,7 @@ export const ImageTextBox = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  height: 75px;
   align-items: center;
 
   span {
@@ -51,5 +63,20 @@ export const ImageTextBox = styled.div`
     font-size: 20px;
     flex-direction: column;
     justify-content: space-around;
+  }
+`;
+
+export const IndividualImage = styled.div`
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  img {
+    width: 61%;
+    height: 64vh;
   }
 `;
