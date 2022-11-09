@@ -1,10 +1,13 @@
 import Gallery from "./components/gallery/Gallery";
+import { GlobalStyle } from "./components/style/container";
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <GlobalStyle />
+
       <Gallery />
-    </div>
+    </>
   );
 }
 
