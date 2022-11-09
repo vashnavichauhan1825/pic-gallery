@@ -1,29 +1,31 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+
 import Navbar from "./Navbar";
 import { GalleryCont, ImageCard } from "../style/container";
 import Card from "./card/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { getImages } from "../../store/getDataSlice";
+import Loading from "../ui/Loading";
 
 const Gallery = () => {
-  const [image, setImage] = useState([]);
+  const { imageData, loading } = useSelector((state) => state.gallery);
+  const dispatch = useDispatch();
   useEffect(() => {
-    axios
-      .get(
-        `https://api.unsplash.com/photos?client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`
-      )
-      .then(({ data }) => {
-        setImage(data);
-        console.log(data);
-      });
+    dispatch(getImages());
   }, []);
+
   return (
     <>
       <Navbar />
-      <GalleryCont>
-        {image.map((item) => (
-          <Card key={item.id} {...item} />
-        ))}
-      </GalleryCont>
+      {loading ? (
+        <Loading />
+      ) : (
+        <GalleryCont>
+          {imageData.map((item) => (
+            <Card key={item.id} {...item} />
+          ))}
+        </GalleryCont>
+      )}
     </>
   );
 };
