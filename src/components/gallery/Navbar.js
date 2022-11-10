@@ -1,9 +1,10 @@
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getImages, searchImage } from "../../store/getDataSlice";
 import { Nav } from "../style/container";
 
 const Navbar = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const searchHandler = (e) => {
     const keyword = e.target.value;
@@ -20,11 +21,14 @@ const Navbar = () => {
           <i class="fa fa-camera-retro" aria-hidden="true"></i>PIC-GALLERY
         </h2>
       </Link>
-      <input
-        type="text"
-        onChange={(e) => searchHandler(e)}
-        placeholder="search..."
-      />
+      {location.pathname === "/" && (
+        <input
+          type="text"
+          onChange={(e) => searchHandler(e)}
+          placeholder="search..."
+        />
+      )}
+
       <a
         href="https://github.com/vashnavichauhan1825/pic-gallery"
         target="_blank"
