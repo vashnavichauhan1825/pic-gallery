@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 body{
               margin: 0;
+              font-family:'Manrope',sans-serif ;
               --Main-hue:#00FFFF;
               --Cta-color:#9BFFFF;
               --Bg-color:#0D2424;
@@ -15,6 +16,28 @@ body{
 }
 a {
     text-decoration: none;
+  }
+  @font-face {
+    font-family:'Manrope',sans-serif ;
+    src: url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&display=swap');
+}
+&::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: var(--Bg-color);
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: var(--Main-hue);
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--Main-hue);
   }
 `;
 export const Nav = styled.div`

@@ -6,22 +6,21 @@ import { useRef } from "react";
 import { toBlob } from "html-to-image";
 
 const Card = (props) => {
-  const checkWiring = useSelector((state) => state.gallery.dummyValue);
-  const downloadImage = (url) => {
-    saveAs(`${url}`, "image.jpg"); // Put your image url here.
+  const downloadImage = (url, name) => {
+    saveAs(`${url}`, `${name}.jpg`);
   };
   const imageRef = useRef(null);
 
-  const handleShare = async () => {
+  const handleShare = async (name) => {
     const newFile = await toBlob(imageRef.current);
     const data = {
       files: [
-        new File([newFile], "nuzlocke.png", {
+        new File([newFile], `${name}.jpg`, {
           type: newFile.type,
         }),
       ],
-      title: "Nuzlocke",
-      text: "Nuzlocke",
+      title: `${name}`,
+      text: `${name}`,
     };
 
     try {
@@ -52,11 +51,15 @@ const Card = (props) => {
 
           <div>
             <i
-              onClick={() => downloadImage(props.urls.small)}
+              onClick={() => downloadImage(props.urls.small, props.user.name)}
               className="fa fa-download"
               aria-hidden="true"
             ></i>
-            <i onClick={handleShare} class="fa fa-share" aria-hidden="true"></i>
+            <i
+              onClick={() => handleShare(props.user.name)}
+              class="fa fa-share"
+              aria-hidden="true"
+            ></i>
           </div>
         </ImageTextBox>
       </ImageCard>

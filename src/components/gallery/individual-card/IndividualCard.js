@@ -9,7 +9,7 @@ const IndividualCard = () => {
 
   const imageArr = useSelector((state) => state.gallery.imageData);
   const value = imageArr.filter((item) => item.id === picId);
-  console.log(value);
+
   return (
     <>
       <Navbar />
@@ -28,7 +28,7 @@ const IndividualCard = () => {
                   </span>
                   <span>
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    {image.location.name}
+                    {image.user.location}
                   </span>
                 </DetailCont>
 

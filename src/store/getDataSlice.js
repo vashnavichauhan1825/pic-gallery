@@ -31,7 +31,6 @@ const getDataSlice = createSlice({
     [getImages.fulfilled]: (state, action) => {
       state.loading = false;
       state.imageData = action.payload;
-      console.log(action.payload);
     },
     [getImages.rejected]: (state, action) => {
       state.loading = false;
@@ -42,7 +41,6 @@ const getDataSlice = createSlice({
     [searchImage.fulfilled]: (state, action) => {
       state.loading = false;
       state.imageData = action.payload.results;
-      console.log(action.payload.results);
     },
     [searchImage.rejected]: (state, action) => {
       state.loading = false;

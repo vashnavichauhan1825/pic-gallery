@@ -8,22 +8,16 @@ import { getImages } from "../../store/getDataSlice";
 import Loading from "../ui/Loading";
 
 const Gallery = () => {
-  const [imgData, setImgData] = useState([]);
   const { imageData, loading } = useSelector((state) => state.gallery);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getImages());
-    console.log(imageData);
   }, []);
-
-  const setImgHandler = (data) => {
-    setImgData(data);
-  };
 
   return (
     <>
-      <Navbar searchFunc={setImgHandler} />
+      <Navbar />
       {loading ? (
         <Loading />
       ) : (
