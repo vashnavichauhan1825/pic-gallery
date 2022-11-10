@@ -26,7 +26,7 @@ const Navbar = () => {
         placeholder="search..."
       />
       <a
-        href="https://github.com/vashnavichauhan1825/pic-gallery/tree/main"
+        href="https://github.com/vashnavichauhan1825/pic-gallery"
         target="_blank"
       >
         <i class="fa fa-github" aria-hidden="true"></i>
