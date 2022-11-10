@@ -6,11 +6,10 @@ import { useRef } from "react";
 import { toBlob } from "html-to-image";
 
 const Card = (props) => {
-  const imageRef = useRef(null);
   const downloadImage = (url, name) => {
     saveAs(`${url}`, `${name}.jpg`);
   };
-
+  const imageRef = useRef(null);
   const handleShare = async (name) => {
     const newFile = await toBlob(imageRef.current);
     const data = {
