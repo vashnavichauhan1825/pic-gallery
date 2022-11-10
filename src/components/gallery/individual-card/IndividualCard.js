@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { IndividualImage } from "../../style/container";
+import { DetailCont, IndividualImage } from "../../style/container";
 import Navbar from "../Navbar";
 
 const IndividualCard = () => {
@@ -18,7 +18,22 @@ const IndividualCard = () => {
         .map((image) => {
           return (
             <IndividualImage>
+              <h1>{image.user.name}</h1>
               <img src={image.urls.regular} />
+              <div>
+                <DetailCont>
+                  <span>
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    {image.likes}
+                  </span>
+                  <span>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    {image.location.name}
+                  </span>
+                </DetailCont>
+
+                <p>{image.user.bio}</p>
+              </div>
             </IndividualImage>
           );
         })}

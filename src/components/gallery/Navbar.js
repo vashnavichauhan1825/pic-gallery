@@ -1,28 +1,38 @@
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchImage } from "../../store/getDataSlice";
+import { Link } from "react-router-dom";
+import { getImages, searchImage } from "../../store/getDataSlice";
 import { Nav } from "../style/container";
 
-const Navbar = (props) => {
-  const { imageData } = useSelector((state) => state.gallery);
+const Navbar = () => {
   const dispatch = useDispatch();
-  const [pic, setPic] = useState("");
   const searchHandler = (e) => {
-    dispatch(searchImage(e.target.value));
-    // axios
-    //   .get(
-    //     `https://api.unsplash.com/search/photos?query=${e.target.value}&client_id=${process.env.REACT_APP_UNSPLASH_API_KEY}`
-    //   )
-    //   .then((data) => console.log(data));
+    const keyword = e.target.value;
+    if (keyword.length !== 0) {
+      dispatch(searchImage(keyword));
+    } else {
+      dispatch(getImages());
+    }
   };
   return (
     <Nav>
+      <Link to="/">
+        <h2>
+          <i class="fa fa-camera-retro" aria-hidden="true"></i>PIC-GALLERY
+        </h2>
+      </Link>
       <input
         type="text"
         onChange={(e) => searchHandler(e)}
-        placeholder="serach..."
+        placeholder="search..."
       />
+      <a
+        href="https://github.com/vashnavichauhan1825/pic-gallery/tree/main"
+        target="_blank"
+      >
+        <i class="fa fa-github" aria-hidden="true"></i>
+      </a>
     </Nav>
   );
 };

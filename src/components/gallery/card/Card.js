@@ -41,11 +41,12 @@ const Card = (props) => {
         </Link>
         <ImageTextBox>
           <span>
-            <h2>{props.user.name}</h2>
+            <Link to={`/pic/${props.id}`}>
+              <h2>{props.user.name}</h2>
+            </Link>
             <span>
-              <i class="fa fa-heart" aria-hidden="true">
-                {props.likes}
-              </i>
+              <i class="fa fa-heart" aria-hidden="true"></i>
+              {props.likes}
             </span>
           </span>
 
