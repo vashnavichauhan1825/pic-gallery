@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 
-import { toBlob } from "html-to-image";
 import Navbar from "./Navbar";
 import { GalleryCont, ImageCard, IndividualImage } from "../style/container";
 import Card from "./card/Card";
@@ -15,12 +14,13 @@ const Gallery = () => {
 
   useEffect(() => {
     dispatch(getImages());
-    setImgHandler(imageData);
+    console.log(imageData);
   }, []);
 
   const setImgHandler = (data) => {
     setImgData(data);
   };
+
   return (
     <>
       <Navbar searchFunc={setImgHandler} />
@@ -28,9 +28,9 @@ const Gallery = () => {
         <Loading />
       ) : (
         <>
-          {imgData.length ? (
+          {imageData.length ? (
             <GalleryCont>
-              {imgData.map((item) => (
+              {imageData.map((item) => (
                 <Card key={item.id} {...item} />
               ))}
             </GalleryCont>
